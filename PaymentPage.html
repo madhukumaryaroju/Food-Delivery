@@ -134,10 +134,57 @@
                 flex: 1 1 100%;
             }
         }
+
+       /* Order Summary Styles */
+.order-summary {
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1 1 45%;
+}
+
+.order-summary h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.order-summary .item {
+    margin-bottom: 15px;
+}
+
+.order-summary .item p {
+    margin: 0;
+    font-size: 17px;
+    color: black;
+}
+
+.order-summary .item p.price {
+    text-align: right;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.order-summary .total {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ff5722;
+}
+
+/* Adjustments for Mobile Devices */
+@media (max-width: 768px) {
+    .order-summary {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+}
+
     </style>
+
 </head>
 <body>
-
 <header>
     <h1>Payment Page</h1>
 </header>
@@ -145,28 +192,20 @@
 <div class="container">
     <div class="order-summary">
         <h2>Order Summary</h2>
-        <div class="item">
-            <p>Greek Salad</p>
-            
+        <div id="orderItems">
+            <!-- Order items will be inserted here -->
         </div>
-        <div class="item">
-            <p>Peri Peri Rolls</p>
-
-        </div>
-        <div class="item">
-            <p>Delivery Charge : 50 rs </p>
-            
-        </div>
-        <p class="total">Total: ₹220.00</p>
+        <p class="total" id="orderTotal">Total: ₹0.00</p>
     </div>
-    
+
     <div class="payment-form">
         <form action="/submit-payment" method="POST">
+            <!-- Payment form fields -->
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
 
             <label for="card-number">Card Information</label>
-            <input type="text" id="card-number" name="card-number" placeholder="4000 0035 6000 0008" required>
+            <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
 
             <label for="expiry-date">Expiry Date</label>
             <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" required>
@@ -183,17 +222,32 @@
                 <!-- Add more options as needed -->
             </select>
 
-            <input type="submit" value="Pay" onclick="pay()">
+            <input type="submit" value="Pay">
         </form>
-
-
     </div>
 </div>
 
 <script>
-    function pay(){
-        window.location.href="OderPage.html";
+    // Retrieve and display order details
+    const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+    if (orderDetails) {
+        const orderItemsDiv = document.getElementById('orderItems');
+        orderItemsDiv.innerHTML = `
+            <div class="item" >
+                <h3>Dish Name: ${orderDetails.name}</h3> 
+
+                <h3>Restaurant : ${orderDetails.restaurant}</h3> 
+                <h3>Quantity: ${orderDetails.quantity}</h3>
+            </div>
+            <div class="item">
+                <h3>Delivery Charge: ₹50</h3>
+            </div>
+        `;
+        document.getElementById('orderTotal').innerText = `Total: ₹${orderDetails.total.toFixed(2)}`;
     }
+
+    // Clear the order details after use
+    localStorage.removeItem('orderDetails');
 </script>
 
 </body>

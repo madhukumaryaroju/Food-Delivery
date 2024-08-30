@@ -288,15 +288,24 @@
     }
 
     function calculateTotal() {
-        const quantity = parseInt(document.getElementById('quantityInput').value);
-        const price = selectedItem.price;
-        const subtotal = quantity * price;
-        const deliveryFee = 5.00;
-        const total = subtotal + deliveryFee;
+    const quantity = parseInt(document.getElementById('quantityInput').value);
+    const price = selectedItem.price;
+    const subtotal = quantity * price;
+    const deliveryFee = 5.00;
+    const total = subtotal + deliveryFee;
 
-        document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
-        document.getElementById('total').innerText = `$${total.toFixed(2)}`;
-    }
+    document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
+    document.getElementById('total').innerText = `$${total.toFixed(2)}`;
+
+    // Store details in localStorage
+    localStorage.setItem('orderDetails', JSON.stringify({
+        name: selectedItem.name,
+        restaurant: selectedItem.restaurant,
+        quantity: quantity,
+        total: total
+    }));
+}
+
 </script>
 
 </body>
