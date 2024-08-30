@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="clone.css">
+    <style>
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Add some styles for the search bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#searchBar {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; /* Space between rows and columns */
+    justify-content: center;
+    padding: 40px; /* Optional padding around the container */
+}
+
+.movie {
+    width: 350px; /* Adjusted width */
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px; /* Space between rows */
+}
+
+.movie img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+.movie-info h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.movie-info p {
+    color: black;
+    font-size: 14px;
+}
+
+.movie-info button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.movie-info button:hover {
+    background-color: #0056
+}
+
+.im1{
+    width: 100%;
+}
+
+.movie-info {
+    padding: 10px;
+    position: relative; /* Required for absolute positioning of rating stars */
+}
+.rating-symbol {
+    font-size: 20px; /* Size of the rating symbol */
+    color: goldenrod; /* Color for the symbol */
+    border: black;
+    margin-right: 5px; /* Space between symbol and percentage */
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Search bar container -->
+    <div class="search-container">
+        <input type="text" id="searchBar" onkeyup="searchMovies()" placeholder="Search for Dishes..">
+    </div>
+
+  
+    <div class="movie-container">
+        <div class="movie">
+            <img src="assests/pa2.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Penne <p> Price : 150 rs </p></h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button onclick="orderNow('Penne', 'Sushi Haven', 'Food Provides essential nutrients for overall health.', 'assests/pa2.jpeg',150)">Order Now</button>            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/r1.jpg" alt="Deadpool & Wolverine">
+            <div class="movie-info">
+                <h3>Dinner Rolls</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button5" onclick="orderNow('Dinner Rolls','Bella Italia', 'Food Provides essential nutrients for overall health','assests/r1.jpg' )">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/pa1.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Spaghetti</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button25" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/p3.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Chole Bhature</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button23" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/p4.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Vegetable Biryani</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button24" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/d2.jpeg" alt="Auron Mein Kahan Dum Tha">
+            <div class="movie-info">
+                <h3>Brownies</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button10" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/pa3.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Fettuccine</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button27" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/c1.jpeg" alt="Auron Mein Kahan Dum Tha">
+            <div class="movie-info">
+                <h3>Chocolate Cake</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button17" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/s2.jpg" alt="Auron Mein Kahan">
+            <div class="movie-info">
+                <h3>Greek Salad</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="28" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/c4.jpeg" alt="Auron Mein Kahan Dum Tha">
+            <div class="movie-info">
+                <h3>Carrot Cake</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button20" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/sw1.jpeg" alt="Deadpool & Wolverine">
+            <div class="movie-info">
+                <h3>Club Sandwich</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button13" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/p2.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Aloo Gobi</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button22" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/s4.jpg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Caprese Salad</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button4" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/c3.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Cheesecake</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button1-9" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/sw2.jpeg" alt="Auron Mein Kahan Dum Tha">
+            <div class="movie-info">
+                <h3>Reuben Sandwich</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button14" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/d1.jpeg" alt="Deadpool & Wolverine">
+            <div class="movie-info">
+                <h3>Tiramisu</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button9" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/sw4.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Grilled Cheese Sandwich</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button16" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/s3.jpg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Cobb Salad</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button3" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/d3.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Panna Cotta</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button11" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/c2.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Red Velvet Cake</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button18" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/pa4.jpg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Ravioli</h3>
+                <p>Food provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button2-8" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/r4.jpg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Sushi Rolls</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button8" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/sw3.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>BLT Sandwich</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
+                <button id="button15" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/d4.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Mango Pudding</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button12" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/p1.jpeg" alt="Ulajh">
+            <div class="movie-info">
+                <h3>Paneer Tikka</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Bella Italia</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button21" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/c3.jpeg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Cheesecake</h3>
+                <p>Food Provides essential nutrients for overall health.</p>
+                <p>Restaurant: Sushi Haven</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button19" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        <div class="movie">
+            <img src="assests/pa4.jpg" alt="Bad Newz">
+            <div class="movie-info">
+                <h3>Ravioli</h3>
+                <p>Food provides essential nutrients for overall health.</p>
+                <p>Restaurant: The Gourmet Bistro</p>
+                <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
+                <button id="button28" onclick="orderNow()">Order Now</button>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <script>
+       
+
+       function orderNow(name, restaurant, description, image, price) {
+    // Store the selected item details in localStorage
+    const itemDetails = {
+        name: name,
+        restaurant: restaurant,
+        description: description,
+        image: image,
+        price: price // Add the price to the item details
+    };
+    localStorage.setItem('selectedItem', JSON.stringify(itemDetails));
+
+    // Redirect to the checkout page
+    window.location.href = "Checkout.html";
+}
+
+
+
+
+        // Function to filter movies based on search input
+        function searchMovies() {
+            const input = document.getElementById('searchBar').value.toLowerCase();
+            const movies = document.getElementsByClassName('movie');
+
+            for (let i = 0; i < movies.length; i++) {
+                const movieTitle = movies[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (movieTitle.includes(input)) {
+                    movies[i].style.display = "";
+                } else {
+                    movies[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

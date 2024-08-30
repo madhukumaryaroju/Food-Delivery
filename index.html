@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhu's Food Delivery</title>
+    <style>
+        /* Add your existing CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #000;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        .navbar .logo {
+            font-size: 30px;
+            color: #ff5a3c;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+            gap: 10px; /* Space between buttons */
+        }
+
+        .btn {
+            background-color: #007bff; /* Button color */
+            border: none; /* Remove default border */
+            color: white; /* Text color */
+            padding: 10px 20px; /* Padding inside buttons */
+            font-size: 16px; /* Font size */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            outline: none; /* Remove default outline */
+            transition: background-color 0.3s; /* Smooth color transition */
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+
+        .btn:active {
+            background-color: #004494; /* Even darker color when button is pressed */
+        }
+
+        .intro-img {
+            display: flex; /* Center the image */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        .intro-img img {
+            max-width: 100%; /* Make sure the image fits within its container */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Optional: rounded corners for the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+        }
+
+        .types {
+            text-align: center;
+            padding: 50px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .types h1 {
+            font-size: 40px;
+            color: black;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-style: italic;
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+
+        .types p  {
+            font-size: 18px;
+            color: black;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-style: italic;
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+
+        .types-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .types-item {
+            width: 120px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .types-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .types-item:hover img {
+            border: 3px solid orange;
+        }
+
+        .types-item p  {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .types-item:hover p {
+            color: #FF6600;
+            transform: scale(1.1);
+        }
+
+
+        .additional-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .additional-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Increase space between images */
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .additional-images img {
+            width: 300px; /* Make the images larger */
+            height: 200px; /* Set a specific height */
+            border-radius: 15px; /* Rounded corners */
+            object-fit: cover; /* Ensure images maintain aspect ratio and fill the space */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
+        }
+
+        .additional-images img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+        }
+
+
+    </style>
+
+    <script>
+        function menu(){
+        window.location.href="menu.html";
+    }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Madhu's Food Delivery</div>
+        <div class="menu">
+            <input type="button" value="Home" class="btn">
+            <input type="button" value="Menu" onclick="menu()" class="btn">
+            <input type="button" value="Mobile App" class="btn">
+            <input type="button" value="Contact Us" class="btn">
+            <input type="button" value="Sign In" class="btn">
+        </div>
+    </div>
+            
+    <div class="intro-img">
+        <img src="header_img.png" alt="Introduction Image" class="intro-img">
+    </div>
+
+    <section class="types">
+        <h1>Explore Our Types</h1>
+        <p>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience. One delicious meal at a time.</p>
+        <div class="types-items">
+            <div class="types-item" onclick="showImages('salad-images')">
+                <img src="assests/menu_1.png" alt="Salad">
+                <p>Salad</p>
+            </div>
+            <div class="types-item" onclick="showImages('rolls-images')">
+                <img src="assests/menu_2.png" alt="Rolls">
+                <p>Rolls</p>
+            </div>
+            <div class="types-item" onclick="showImages('desserts-images')">
+                <img src="assests/menu_3.png" alt="Desserts">
+                <p>Desserts</p>
+            </div>
+            <div class="types-item" onclick="showImages('sandwich-images')">
+                <img src="assests/menu_4.png" alt="Sandwich">
+                <p>Sandwich</p>
+            </div>
+            <div class="types-item" onclick="showImages('cake-images')">
+                <img src="assests/menu_5.png" alt="Cake">
+                <p>Cake</p>
+            </div>
+            <div class="types-item" onclick="showImages('pureveg-images')">
+                <img src="assests/menu_6.png" alt="Pure Veg">
+                <p>Pure Veg</p>
+            </div>
+            <div class="types-item" onclick="showImages('pasta-images')">
+                <img src="assests/menu_7.png" alt="Pasta">
+                <p>Pasta</p>
+            </div>
+        </div>
+
+        <div id="salad-images" class="additional-images">
+            <img src="assests/s1.jpg" alt="Salad 1">
+            <img src="assests/s2.jpg" alt="Salad 2">
+            <img src="assests/s3.jpg" alt="Salad 3">
+            <img src="assests/s4.jpg" alt="Salad 4">
+        </div>
+        
+
+        <div id="rolls-images" class="additional-images">
+            <img src="assests/r1.jpg" alt="Rolls 1">
+            <img src="assests/r2.jpg" alt="Rolls 2">
+            <img src="assests/r3.jpg" alt="Rolls 3">
+            <img src="assests/r4.jpg" alt="Rolls 4">
+        
+        </div>
+
+        <div id="desserts-images" class="additional-images">
+            <img src="assests/d1.jpeg" alt="Desserts 1">
+            <img src="assests/d2.jpeg" alt="Desserts 2">
+            <img src="assests/d3.jpeg" alt="Desserts 3">
+            <img src="assests/d4.jpeg" alt="Desserts 4">
+          
+        </div>
+
+        <div id="sandwich-images" class="additional-images">
+            <img src="assests/sw1.jpeg" alt="Sandwich 1">
+            <img src="assests/sw2.jpeg" alt="Sandwich 2">
+            <img src="assests/sw3.jpeg" alt="Sandwich 3">
+            <img src="assests/sw4.jpeg" alt="Sandwich 4">
+           
+        </div>
+
+        <div id="cake-images" class="additional-images">
+            <img src="assests/c1.jpeg" alt="Cake 1">
+            <img src="assests/c2.jpeg" alt="Cake 2">
+            <img src="assests/c3.jpeg" alt="Cake 3">
+            <img src="assests/c4.jpeg" alt="Cake 4">
+
+        </div>
+
+        <div id="pureveg-images" class="additional-images">
+            <img src="assests/p1.jpeg" alt="Pure Veg 1">
+            <img src="assests/p2.jpeg" alt="Pure Veg 2">
+            <img src="assests/p3.jpeg" alt="Pure Veg 3">
+            <img src="assests/p4.jpeg" alt="Pure Veg 4">
+           
+        </div>
+
+        <div id="pasta-images" class="additional-images">
+            <img src="assests/pa1.jpeg" alt="Pasta 1">
+            <img src="assests/pa2.jpeg" alt="Pasta 2">
+            <img src="assests/pa3.jpeg" alt="Pasta 3">
+            <img src="assests/pa4.jpg" alt="Pasta 4">
+        
+        </div>
+    </section>
+
+    <script>
+        function showImages(id) {
+            // Hide all additional images
+            var allImageSections = document.querySelectorAll('.additional-images');
+            allImageSections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected set of images
+            var selectedImages = document.getElementById(id);
+            if (selectedImages) {
+                selectedImages.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        header h1 {
+            color: #ff5722;
+            font-size: 32px;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .order-summary, .payment-form {
+            padding: 20px;
+            box-sizing: border-box;
+            flex: 1 1 45%;
+        }
+
+        .order-summary {
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .order-summary h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .order-summary .item {
+            margin-bottom: 15px;
+        }
+
+        .order-summary .item p {
+            margin: 0;
+            font-size: 17px;
+            color: black;
+        }
+
+        .order-summary .item p.price {
+            text-align: right;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .order-summary .total {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff5722;
+        }
+
+        .payment-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .payment-form input, .payment-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .payment-form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .payment-form input[type="submit"]:hover {
+            background-color: #0056b3;
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .payment-form input[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .order-summary, .payment-form {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Payment Page</h1>
+</header>
+
+<div class="container">
+    <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="item">
+            <p>Greek Salad</p>
+            
+        </div>
+        <div class="item">
+            <p>Peri Peri Rolls</p>
+
+        </div>
+        <div class="item">
+            <p>Delivery Charge : 50 rs </p>
+            
+        </div>
+        <p class="total">Total: ₹220.00</p>
+    </div>
+    
+    <div class="payment-form">
+        <form action="/submit-payment" method="POST">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="card-number">Card Information</label>
+            <input type="text" id="card-number" name="card-number" placeholder="4000 0035 6000 0008" required>
+
+            <label for="expiry-date">Expiry Date</label>
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" required>
+
+            <label for="cvc">CVC</label>
+            <input type="text" id="cvc" name="cvc" placeholder="CVC" required>
+
+            <label for="cardholder-name">Cardholder Name</label>
+            <input type="text" id="cardholder-name" name="cardholder-name" placeholder="Full name on card" required>
+
+            <label for="country">Country or Region</label>
+            <select id="country" name="country" required>
+                <option value="India">India</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <input type="submit" value="Pay" onclick="pay()">
+        </form>
+
+
+    </div>
+</div>
+
+<script>
+    function pay(){
+        window.location.href="OderPage.html";
+    }
+</script>
+
+</body>
+</html>
