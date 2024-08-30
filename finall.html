@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Page</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        .divvu {
+            font-size: 30px;
+            color: #ff5a3c; /* Vivid color for emphasis */
+            font-weight: bold; /* Make the text bold */
+            background: white;
+            margin-left: 30%;
+            margin-top: 2%;
+            text-align: center; /* Center-align the text */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow for a 3D effect */
+            padding: 10px 20px; /* Add some padding around the text */
+            border-radius: 12px; /* Rounded corners for the background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+            display: inline-block; /* Adjust layout to content size */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .info-box {
+            width: 800px;
+            flex: 1;
+            padding: 20px;
+            margin-right: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h1 {
+            color: #ff5722;
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .item-image {
+            flex: 1;
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            background-color: #ff5a3c;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background-color: #ff8a6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-box">
+            <h1>Payment Details</h1>
+            <p id="orderId"></p> <!-- Placeholder for order ID -->
+            <p id="dishName"></p>
+            <p id="restaurant"></p>
+            <p id="quantity"></p>
+            <p id="totalCost"></p> <!-- Placeholder for total cost -->
+            <p id="email"></p>
+            <p id="cardNumber"></p>
+            <p id="expiryDate"></p>
+            <p id="cvc"></p>
+            <p id="cardholderName"></p>
+            <p id="country"></p>
+        </div>
+        <img id="itemImage" class="item-image" src="header_img.png" alt="Selected Item Image"> <!-- Placeholder for item image -->
+    </div>
+
+    <div class="divvu">
+        <h1>Thanks For Ordering</h1>
+    </div>
+
+    <a href="index.html" class="home-button">Home</a>
+
+    <script>
+        // Function to generate a random order ID
+        function generateOrderId() {
+            return 'ORD-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+        }
+
+        // Set a random order ID and display it
+        const orderId = generateOrderId();
+        document.getElementById('orderId').textContent = `Order ID: ${orderId}`;
+
+        // Retrieve order details and payment details from localStorage
+        const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+        const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+        
+        // Check if order details exist and display them
+        if (orderDetails) {
+            document.getElementById('dishName').textContent = `Dish Name: ${orderDetails.name}`;
+            document.getElementById('restaurant').textContent = `Restaurant: ${orderDetails.restaurant}`;
+            document.getElementById('quantity').textContent = `Quantity: ${orderDetails.quantity}`;
+            document.getElementById('totalCost').textContent = `Total Cost: ₹${orderDetails.total.toFixed(2)}`; // Display total cost
+            
+            // Set the image source if the URL exists
+            if (orderDetails.image) {
+                document.getElementById('itemImage').src = orderDetails.image;
+                document.getElementById('itemImage').alt = `Image of ${orderDetails.name}`;
+            } else {
+                document.getElementById('itemImage').style.display = 'header_img.png'; // Hide image if no URL
+            }
+        } else {
+            document.querySelector('.info-box').innerHTML += '<p>No order details available.</p>';
+        }
+
+        // Check if payment details exist and display them
+        if (paymentDetails) {
+            document.getElementById('email').textContent = `Email: ${paymentDetails.email}`;
+            // Display only the last 3 digits of the card number
+            if (paymentDetails.cardNumber) {
+                const lastThreeDigits = paymentDetails.cardNumber.slice(-3);
+                document.getElementById('cardNumber').textContent = `Card Number: ***${lastThreeDigits}`;
+            }
+            // document.getElementById('expiryDate').textContent = `Expiry Date: ${paymentDetails.expiryDate}`;
+            // document.getElementById('cvc').textContent = `CVC: ${paymentDetails.cvc}`;
+            document.getElementById('cardholderName').textContent = `Cardholder Name: ${paymentDetails.cardholderName}`;
+            // document.getElementById('country').textContent = `Country: ${paymentDetails.country}`;
+        } else {
+            document.querySelector('.info-box').innerHTML += '<p>No payment details available.</p>';
+        }
+
+        // Optionally clear localStorage after displaying
+        localStorage.removeItem('paymentDetails');
+        localStorage.removeItem('orderDetails');
+    </script>
+</body>
+</html>

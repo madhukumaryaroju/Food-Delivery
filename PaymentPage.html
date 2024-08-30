@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
     <style>
+        /* Your existing styles remain unchanged */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
@@ -104,6 +105,12 @@
             font-size: 16px;
         }
 
+        .payment-form input[readonly] {
+            background-color: #f4f4f4;
+            color: #777;
+            cursor: not-allowed;
+        }
+
         .payment-form input[type="submit"] {
             background-color: #007bff;
             color: white;
@@ -134,55 +141,7 @@
                 flex: 1 1 100%;
             }
         }
-
-       /* Order Summary Styles */
-.order-summary {
-    border-right: 1px solid #e0e0e0;
-    padding: 20px;
-    box-sizing: border-box;
-    flex: 1 1 45%;
-}
-
-.order-summary h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-weight: bold;
-}
-
-.order-summary .item {
-    margin-bottom: 15px;
-}
-
-.order-summary .item p {
-    margin: 0;
-    font-size: 17px;
-    color: black;
-}
-
-.order-summary .item p.price {
-    text-align: right;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.order-summary .total {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #ff5722;
-}
-
-/* Adjustments for Mobile Devices */
-@media (max-width: 768px) {
-    .order-summary {
-        border-right: none;
-        border-bottom: 1px solid #e0e0e0;
-    }
-}
-
     </style>
-
 </head>
 <body>
 <header>
@@ -199,31 +158,37 @@
     </div>
 
     <div class="payment-form">
-        <form action="/submit-payment" method="POST">
-            <!-- Payment form fields -->
+        <form action="/submit-payment" method="POST" onsubmit="pay(event)">
+            <label for="dishName">Dish Name</label>
+            <input type="text" id="dishName" name="dishName" readonly>
+            
+            <label for="restaurant">Restaurant</label>
+            <input type="text" id="restaurant" name="restaurant" readonly>
+
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
+            <input type="email" id="email" name="email" >
+        
             <label for="card-number">Card Information</label>
-            <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
-
+            <input type="text" id="card-number" name="card-number" placeholder="4000 0035 6000 0008" >
+        
             <label for="expiry-date">Expiry Date</label>
-            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" required>
-
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" >
+        
             <label for="cvc">CVC</label>
-            <input type="text" id="cvc" name="cvc" placeholder="CVC" required>
-
+            <input type="text" id="cvc" name="cvc" placeholder="CVC" >
+        
             <label for="cardholder-name">Cardholder Name</label>
-            <input type="text" id="cardholder-name" name="cardholder-name" placeholder="Full name on card" required>
-
+            <input type="text" id="cardholder-name" name="cardholder-name" placeholder="Full name on card" >
+        
             <label for="country">Country or Region</label>
-            <select id="country" name="country" required>
+            <select id="country" name="country" >
                 <option value="India">India</option>
                 <!-- Add more options as needed -->
             </select>
-
+        
             <input type="submit" value="Pay">
         </form>
+        
     </div>
 </div>
 
@@ -231,24 +196,54 @@
     // Retrieve and display order details
     const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
     if (orderDetails) {
+        // Populate the order summary section
         const orderItemsDiv = document.getElementById('orderItems');
         orderItemsDiv.innerHTML = `
-            <div class="item" >
-                <h3>Dish Name: ${orderDetails.name}</h3> 
-
-                <h3>Restaurant : ${orderDetails.restaurant}</h3> 
-                <h3>Quantity: ${orderDetails.quantity}</h3>
+            <div class="item">
+                <p>Dish Name: ${orderDetails.name}</p>
+                <p>Restaurant: ${orderDetails.restaurant}</p>
+                <p>Quantity: ${orderDetails.quantity}</p>
             </div>
             <div class="item">
-                <h3>Delivery Charge: ₹50</h3>
+                <p>Delivery Charge: ₹50</p>
             </div>
         `;
         document.getElementById('orderTotal').innerText = `Total: ₹${orderDetails.total.toFixed(2)}`;
+
+        // Populate the form fields with order details
+        document.getElementById('dishName').value = orderDetails.name;
+        document.getElementById('restaurant').value = orderDetails.restaurant;
     }
 
-    // Clear the order details after use
-    localStorage.removeItem('orderDetails');
+    // Function to handle payment
+    function pay(event) {
+        // Prevent form from submitting the traditional way
+        event.preventDefault();
+
+        // Get form input values
+        const email = document.getElementById('email').value;
+        const cardNumber = document.getElementById('card-number').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+        const cvc = document.getElementById('cvc').value;
+        const cardholderName = document.getElementById('cardholder-name').value;
+        const country = document.getElementById('country').value;
+
+        // Store payment information in localStorage
+        const paymentDetails = {
+            email: email,
+            cardNumber: cardNumber,
+            expiryDate: expiryDate,
+            cvc: cvc,
+            cardholderName: cardholderName,
+            country: country
+        };
+        localStorage.setItem('paymentDetails', JSON.stringify(paymentDetails));
+
+        // Redirect to another page
+        window.location.href = 'finall.html';
+    }
 </script>
+
 
 </body>
 </html>

@@ -29,7 +29,7 @@
         }
 
         .navbar .logo {
-            font-size: 30px;
+            font-size: 50px;
             color: #ff5a3c;
             font-weight: bold;
         }
@@ -40,25 +40,6 @@
             gap: 10px; /* Space between buttons */
         }
 
-        .btn {
-            background-color: #007bff; /* Button color */
-            border: none; /* Remove default border */
-            color: white; /* Text color */
-            padding: 10px 20px; /* Padding inside buttons */
-            font-size: 16px; /* Font size */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            outline: none; /* Remove default outline */
-            transition: background-color 0.3s; /* Smooth color transition */
-        }
-
-        .btn:hover {
-            background-color: #0056b3; /* Darker color on hover */
-        }
-
-        .btn:active {
-            background-color: #004494; /* Even darker color when button is pressed */
-        }
 
         .intro-img {
             display: flex; /* Center the image */
@@ -72,6 +53,32 @@
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px; /* Optional: rounded corners for the image */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+        }
+
+        .btn {
+            background: linear-gradient(145deg, #007bff, #0056b3); /* Gradient background */
+            border: none; /* Remove default border */
+            color: white; /* Text color */
+            padding: 12px 24px; /* Padding inside buttons */
+            font-size: 18px; /* Font size */
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            outline: none; /* Remove default outline */
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Shadow effect */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 1px; /* Spacing between letters */
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #0056b3, #003d7a); /* Darker gradient on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Increased shadow on hover */
+        }
+
+        .btn:active {
+            background: linear-gradient(145deg, #003d7a, #002b5e); /* Even darker gradient when button is pressed */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.1); /* Shadow for pressed state */
+            transform: translateY(2px); /* Slightly move the button down */
         }
 
         .types {

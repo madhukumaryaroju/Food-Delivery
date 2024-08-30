@@ -257,15 +257,16 @@
     // Retrieve item details from localStorage
     const selectedItem = JSON.parse(localStorage.getItem('selectedItem'));
 
-    if (selectedItem) {
-        document.getElementById('itemName').innerText = selectedItem.name;
-        document.getElementById('itemRestaurant').innerText = "Restaurant: " + selectedItem.restaurant;
-        document.getElementById('itemDescription').innerText = selectedItem.description;
-        document.getElementById('itemImage').src = selectedItem.image;
+if (selectedItem) {
+    document.getElementById('itemName').innerText = selectedItem.name;
+    document.getElementById('itemRestaurant').innerText = "Restaurant: " + selectedItem.restaurant;
+    document.getElementById('itemDescription').innerText = selectedItem.description;
+    document.getElementById('itemImage').src = selectedItem.image;
 
-        // Calculate initial subtotal and total
-        calculateTotal();
-    }
+    // Calculate initial subtotal and total
+    calculateTotal();
+}
+
 
     function incrementQuantity() {
         let quantityInput = document.getElementById('quantityInput');
@@ -304,7 +305,40 @@
         quantity: quantity,
         total: total
     }));
+
+        console.log('Storing in localStorage:', {
+        name: selectedItem.name,
+        restaurant: selectedItem.restaurant,
+        quantity: quantity,
+        total: total
+    });
+
+    localStorage.setItem('orderDetails', JSON.stringify({
+        name: selectedItem.name,
+        restaurant: selectedItem.restaurant,
+        quantity: quantity,
+        total: total
+    }));
 }
+
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+    console.log(orderDetails); // Debugging line to check if data is retrieved correctly
+
+    if (orderDetails) {
+        document.getElementById('orderItemName').innerText = orderDetails.name;
+        document.getElementById('orderRestaurant').innerText = "Restaurant: " + orderDetails.restaurant;
+        document.getElementById('orderQuantity').innerText = "Quantity: " + orderDetails.quantity;
+        document.getElementById('orderTotal').innerText = "Total: $" + orderDetails.total.toFixed(2);
+    } else {
+        console.error("Order details not found in localStorage.");
+    }
+});
 
 </script>
 
