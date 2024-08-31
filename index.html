@@ -5,56 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madhu's Food Delivery</title>
     <style>
-        /* Add your existing CSS styles here */
+        /* General styles for the body */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
         }
-
+    
+        /* Navbar styles */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
             background-color: #fff;
+            border-bottom: 2px solid #eee;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
+    
         .navbar a {
             text-decoration: none;
             color: #000;
             margin: 0 15px;
             font-size: 16px;
+            transition: color 0.3s ease;
         }
-
+    
+        .navbar a:hover {
+            color: #007bff;
+        }
+    
         .navbar .logo {
             font-size: 50px;
             color: #ff5a3c;
             font-weight: bold;
         }
-
+    
         .menu {
             display: flex;
             flex-wrap: wrap; /* Allow buttons to wrap on small screens */
             gap: 10px; /* Space between buttons */
         }
-
-
+    
+        /* Intro image styles */
         .intro-img {
             display: flex; /* Center the image */
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
             overflow: hidden; /* Hide any overflow */
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
         }
-
+    
         .intro-img img {
             max-width: 100%; /* Make sure the image fits within its container */
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px; /* Optional: rounded corners for the image */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+            transition: transform 0.3s ease;
         }
-
+    
+        .intro-img img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+    
+        /* Button styles */
         .btn {
             background: linear-gradient(145deg, #007bff, #0056b3); /* Gradient background */
             border: none; /* Remove default border */
@@ -68,26 +91,31 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Shadow effect */
             text-transform: uppercase; /* Uppercase text */
             letter-spacing: 1px; /* Spacing between letters */
+            margin: 10px 0;
         }
-
+    
         .btn:hover {
             background: linear-gradient(145deg, #0056b3, #003d7a); /* Darker gradient on hover */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Increased shadow on hover */
+            transform: translateY(-2px);
         }
-
+    
         .btn:active {
             background: linear-gradient(145deg, #003d7a, #002b5e); /* Even darker gradient when button is pressed */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.1); /* Shadow for pressed state */
             transform: translateY(2px); /* Slightly move the button down */
         }
-
+    
+        /* Types section */
         .types {
             text-align: center;
             padding: 50px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-radius: 15px;
         }
-
+    
         .types h1 {
             font-size: 40px;
             color: black;
@@ -100,9 +128,10 @@
             font-style: italic;
             padding: 15px 20px;
             border-radius: 10px;
+            background-color: #f0f0f0;
         }
-
-        .types p  {
+    
+        .types p {
             font-size: 18px;
             color: black;
             margin-bottom: 40px;
@@ -114,21 +143,27 @@
             font-style: italic;
             padding: 15px 20px;
             border-radius: 10px;
+            /* background-color: #f0f0f0; */
         }
-
+    
         .types-items {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
-
+    
         .types-item {
             width: 120px;
             text-align: center;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
-
+    
+        .types-item:hover {
+            transform: scale(1.1);
+        }
+    
         .types-item img {
             width: 100px;
             height: 100px;
@@ -137,31 +172,27 @@
             border: 3px solid transparent;
             transition: border 0.3s;
         }
-
+    
         .types-item:hover img {
             border: 3px solid orange;
         }
-
-        .types-item p  {
+    
+        .types-item p {
             margin-top: 10px;
             font-size: 18px;
-            color: #333;
+            color: black;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.3s, transform 0.3s;
         }
-
+    
         .types-item:hover p {
             color: #FF6600;
             transform: scale(1.1);
         }
-
-
-        .additional-images img:hover {
-            transform: scale(1.1);
-        }
-
+    
+        /* Additional images section */
         .additional-images {
             display: flex;
             justify-content: center;
@@ -169,7 +200,7 @@
             flex-wrap: wrap;
             margin-top: 30px;
         }
-
+    
         .additional-images img {
             width: 300px; /* Make the images larger */
             height: 200px; /* Set a specific height */
@@ -178,14 +209,52 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
         }
-
+    
         .additional-images img:hover {
             transform: scale(1.05); /* Slight zoom effect on hover */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
         }
-
-
+    
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+    
+            .navbar .logo {
+                font-size: 40px;
+            }
+    
+            .menu {
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+            }
+    
+            .intro-img {
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+    
+            .types-items {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .types-item {
+                width: 100%;
+                max-width: 200px;
+            }
+    
+            .additional-images img {
+                width: 90%;
+                height: auto;
+            }
+        }
     </style>
+    
 
     <script>
         function menu(){

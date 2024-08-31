@@ -5,30 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
     <style>
-        /* Your existing styles remain unchanged */
+        /* General styles for the body */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f7fa;
             color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s ease;
         }
-
+    
+        /* Header styles */
         header {
             background-color: #ffffff;
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid #e0e0e0;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
+    
         header h1 {
             color: #ff5722;
             font-size: 32px;
             margin: 0;
             letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
-
+    
+        header h1:hover {
+            color: #e64a19;
+        }
+    
+        /* Main container styles */
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -41,52 +53,65 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+    
         .container:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
-
+    
+        /* Order summary and payment form styling */
         .order-summary, .payment-form {
             padding: 20px;
             box-sizing: border-box;
             flex: 1 1 45%;
+            transition: background-color 0.3s ease, border 0.3s ease;
         }
-
+    
         .order-summary {
             border-right: 1px solid #e0e0e0;
+            transition: border-color 0.3s ease;
         }
-
+    
+        .order-summary:hover {
+            border-color: #ff5722;
+        }
+    
         .order-summary h2 {
             font-size: 24px;
             margin-bottom: 20px;
             color: #2c3e50;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-
+    
         .order-summary .item {
             margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
         }
-
+    
         .order-summary .item p {
             margin: 0;
             font-size: 17px;
             color: black;
         }
-
+    
         .order-summary .item p.price {
             text-align: right;
             font-weight: bold;
             color: #2c3e50;
         }
-
+    
         .order-summary .total {
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
             color: #ff5722;
+            text-align: right;
         }
-
+    
+        /* Payment form styles */
         .payment-form label {
             display: block;
             margin-bottom: 10px;
@@ -94,7 +119,7 @@
             color: #555;
             cursor: pointer;
         }
-
+    
         .payment-form input, .payment-form select {
             width: 100%;
             padding: 10px;
@@ -103,14 +128,20 @@
             border-radius: 8px;
             box-sizing: border-box;
             font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-
+    
+        .payment-form input:focus, .payment-form select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+    
         .payment-form input[readonly] {
             background-color: #f4f4f4;
             color: #777;
             cursor: not-allowed;
         }
-
+    
         .payment-form input[type="submit"] {
             background-color: #007bff;
             color: white;
@@ -121,27 +152,80 @@
             cursor: pointer;
             transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
-
+    
         .payment-form input[type="submit"]:hover {
             background-color: #0056b3;
             box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
             transform: translateY(-3px);
         }
-
+    
         .payment-form input[type="submit"]:active {
             transform: translateY(0);
         }
-
+    
+        /* Responsive styles */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
             }
-
+    
             .order-summary, .payment-form {
                 flex: 1 1 100%;
+                padding: 15px;
+            }
+    
+            .order-summary {
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+                margin-bottom: 20px;
             }
         }
+    
+        /* Additional styles */
+        .highlight {
+            background-color: #ffecd2;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .highlight:hover {
+            background-color: #ffd9b3;
+        }
+    
+        .fade-in {
+            animation: fadeIn ease 1s;
+        }
+    
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    
+        .shaking {
+            animation: shake 0.5s;
+        }
+    
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    
+        /* Utility classes */
+        .text-center {
+            text-align: center;
+        }
+    
+        .margin-top-20 {
+            margin-top: 20px;
+        }
+    
+        .padding-20 {
+            padding: 20px;
+        }
     </style>
+    
 </head>
 <body>
 <header>
