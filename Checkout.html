@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
     <style>
@@ -365,8 +362,6 @@
             </div>
         </div>
         <button class="cart-button" onclick="checkout()">Proceed to Payment</button>
-        <div id="map" ></div>
-        <button onclick="getUserLocation()">Get Directions</button>
     </div>
 </div>
 
@@ -458,73 +453,6 @@ if (selectedItem) {
 });
 
 </script>
-<script>
-    let map;
-    let directionsService;
-    let directionsRenderer;
-
-    // Function to initialize the Google Map
-    function initMap() {
-        // Center map at a default location (You can use the restaurant's location)
-        const restaurantLocation = { lat: 37.7749, lng: -122.4194 };  // Replace with actual restaurant coordinates
-        
-        map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
-            center: restaurantLocation,
-        });
-
-        directionsService = new google.maps.DirectionsService();
-        directionsRenderer = new google.maps.DirectionsRenderer();
-        directionsRenderer.setMap(map);
-
-        // Marker for the restaurant
-        new google.maps.Marker({
-            position: restaurantLocation,
-            map: map,
-            title: 'Restaurant Location'
-        });
-    }
-
-    // Function to get user's current location
-    function getUserLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const userLocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
-
-                // Calculate and display the route from user's location to restaurant
-                calculateAndDisplayRoute(userLocation);
-            }, () => {
-                alert('Geolocation failed.');
-            });
-        } else {
-            alert('Browser does not support Geolocation.');
-        }
-    }
-
-    // Function to calculate and display the route
-    function calculateAndDisplayRoute(userLocation) {
-        const restaurantLocation = { lat: 37.7749, lng: -122.4194 };  // Replace with actual restaurant coordinates
-
-        directionsService.route(
-            {
-                origin: userLocation,
-                destination: restaurantLocation,
-                travelMode: google.maps.TravelMode.DRIVING,
-            },
-            (response, status) => {
-                if (status === "OK") {
-                    directionsRenderer.setDirections(response);
-                } else {
-                    window.alert("Directions request failed due to " + status);
-                }
-            }
-        );
-    }
-</script>
-
 
 </body>
 </html>
