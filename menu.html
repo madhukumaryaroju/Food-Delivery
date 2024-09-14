@@ -5,130 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Ticket Booking</title>
     <link rel="stylesheet" href="clone.css">
+
     <style>
         body {
-            background-color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        
-        /* Add some styles for the search bar */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        
-        #searchBar {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: border-color 0.3s ease;
-        }
-        
-        #searchBar:focus {
-            border-color: #007bff;
-        }
-        
-        /* Movie container styles */
-        .movie-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px; /* Space between rows and columns */
-            justify-content: center;
-            padding: 40px; /* Optional padding around the container */
-        }
-        
-        .movie {
-            width: 100%;
-            max-width: 350px; /* Adjusted width */
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px; /* Space between rows */
-        }
-        
-        .movie:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-        
-        .movie img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: opacity 0.3s ease;
-        }
-        
-        .movie img:hover {
-            opacity: 0.9;
-        }
-        
-        .movie-info {
-            padding: 15px;
-            position: relative; /* Required for absolute positioning of rating stars */
-        }
-        
-        .movie-info h3 {
-            margin: 10px 0;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .movie-info p {
-            color: black;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        
-        .movie-info button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .movie-info button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-        
-        .rating-symbol {
-            font-size: 20px; /* Size of the rating symbol */
-            color: goldenrod; /* Color for the symbol */
-            margin-right: 5px; /* Space between symbol and percentage */
-        }
-        
-        .im1 {
-            width: 100%;
-            height: auto;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .movie-container {
-                padding: 20px;
-                gap: 20px;
-            }
-        
-            .movie {
-                width: 90%;
-            }
-        }
-        </style>
+    background-color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Search bar styles */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#searchBar {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+#searchBar:focus {
+    border-color: #007bff;
+}
+
+/* Movie container styles */
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    padding: 40px;
+}
+
+.movie {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.movie:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.movie img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.movie img:hover {
+    opacity: 0.9;
+}
+
+.movie-info {
+    padding: 15px;
+    position: relative;
+}
+
+.movie-info h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.movie-info p {
+    color: black;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.movie-info button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.movie-info button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.rating-symbol {
+    font-size: 20px;
+    color: goldenrod;
+    margin-right: 5px;
+}
+
+.im1 {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .movie-container {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .movie {
+        width: 90%;
+    }
+
+    /* Adjust font sizes for mobile screens */
+    #searchBar {
+        width: 90%; /* Adjust width for smaller screens */
+        font-size: 14px;
+    }
+
+    .movie-info h3 {
+        font-size: 16px; /* Slightly smaller font */
+    }
+
+    .movie-info p {
+        font-size: 13px; /* Adjust paragraph size for readability on smaller screens */
+    }
+
+    .movie-info button {
+        padding: 8px;
+        font-size: 14px; /* Reduce button font size */
+    }
+
+    .movie-container {
+        gap: 15px; /* Reduce gap between items on smaller screens */
+    }
+
+    .movie-info {
+        padding: 10px; /* Less padding on mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #searchBar {
+        width: 95%; /* Full width for very small screens */
+        font-size: 12px;
+    }
+
+    .movie-container {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .movie-info h3 {
+        font-size: 14px;
+    }
+
+    .movie-info p {
+        font-size: 12px;
+    }
+
+    .movie-info button {
+        font-size: 12px;
+        padding: 7px;
+    }
+
+    .movie {
+        max-width: 100%;
+    }
+}
+
+    </style>
         
 
 
