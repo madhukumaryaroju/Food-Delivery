@@ -307,7 +307,6 @@ header h1:hover {
     // Retrieve and display order details
     const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
     if (orderDetails) {
-        // Populate the order summary section
         const orderItemsDiv = document.getElementById('orderItems');
         orderItemsDiv.innerHTML = `
             <div class="item">
@@ -321,37 +320,45 @@ header h1:hover {
         `;
         document.getElementById('orderTotal').innerText = `Total: ₹${orderDetails.total.toFixed(2)}`;
 
-        // Populate the form fields with order details
+        // Populate form fields
         document.getElementById('dishName').value = orderDetails.name;
         document.getElementById('restaurant').value = orderDetails.restaurant;
     }
 
     // Function to handle payment
     function pay(event) {
-        // Prevent form from submitting the traditional way
         event.preventDefault();
 
-        // Get form input values
         const email = document.getElementById('email').value;
-        const cardNumber = document.getElementById('card-number').value;
-        const expiryDate = document.getElementById('expiry-date').value;
-        const cvc = document.getElementById('cvc').value;
-        const cardholderName = document.getElementById('cardholder-name').value;
-        const country = document.getElementById('country').value;
+        const dishName = document.getElementById('dishName').value;
+        const restaurant = document.getElementById('restaurant').value;
+        const total = orderDetails.total.toFixed(2);
 
-        // Store payment information in localStorage
         const paymentDetails = {
             email: email,
-            cardNumber: cardNumber,
-            expiryDate: expiryDate,
-            cvc: cvc,
-            cardholderName: cardholderName,
-            country: country
+            dishName: dishName,
+            restaurant: restaurant,
+            total: total
         };
-        localStorage.setItem('paymentDetails', JSON.stringify(paymentDetails));
 
-        // Redirect to another page
-        window.location.href = 'finall.html';
+        // Send the form data to the server
+        fetch('http://localhost:3000/submit-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(paymentDetails)
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            alert('Payment Successful! An email has been sent to your address.');
+            window.location.href = 'finall.html';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Payment failed. Please try again.');
+        });
     }
 </script>
 
