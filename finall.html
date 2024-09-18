@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Page</title>
+    <style>
+        /* General styles for the body */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s ease;
+        }
+    
+        /* Enhanced div styling */
+        .divvu {
+            font-size: 20px;
+            color: #ff5a3c;
+            font-weight: bold;
+            background: white;
+            margin-left: 35%;
+            margin-top: 2%;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+    
+        .divvu:hover {
+            transform: translateY(-5px);
+            background-color: #ffede0;
+        }
+    
+        /* Container styling */
+        .container {
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    
+        /* Info box styling */
+        .info-box {
+            width: 100%;
+            max-width: 800px;
+            flex: 1;
+            padding: 20px;
+            margin-right: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+    
+        .info-box:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+    
+        .info-box h1 {
+            color: #ff5722;
+            font-size: 28px;
+            margin-top: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    
+        .info-box p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: black;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.8;
+        }
+    
+        /* Image styling */
+        .item-image {
+            flex: 1;
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .item-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Button styling */
+        .home-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            background-color: #ff5a3c;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+    
+        .home-button:hover {
+            background-color: #ff8a6b;
+            transform: translateY(-3px);
+        }
+    
+        .home-button:active {
+            transform: translateY(0);
+        }
+    
+        /* Card component */
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+    
+        .card-header {
+            background-color: #ff5722;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+    
+        .card-body {
+            padding: 20px;
+        }
+    
+        .card-footer {
+            background-color: #f7f7f7;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+    
+        /* Notification styles */
+        .notification {
+            padding: 15px;
+            background-color: #ffede0;
+            color: #ff5722;
+            border-left: 4px solid #ff5722;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+    
+        .notification:hover {
+            background-color: #ffd9b3;
+            border-color: #e64a19;
+        }
+    
+        /* Utility styles */
+        .text-center {
+            text-align: center;
+        }
+    
+        .margin-top-20 {
+            margin-top: 20px;
+        }
+    
+        .padding-20 {
+            padding: 20px;
+        }
+    
+        .rounded-circle {
+            border-radius: 50%;
+        }
+    
+        .highlight {
+            background-color: #ffecd2;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .highlight:hover {
+            background-color: #ffd9b3;
+        }
+    
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn ease 1s;
+        }
+    
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    
+        .shaking {
+            animation: shake 0.5s;
+        }
+    
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+    
+            .info-box {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+    
+            .divvu {
+                margin-left: auto;
+                margin-right: auto;
+            }
+    
+            .item-image {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+    
+            .home-button {
+                width: 100%;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="info-box">
+            <h1>Payment Details</h1>
+            <p id="orderId"></p> <!-- Placeholder for order ID -->
+            <p id="dishName"></p>
+            <p id="restaurant"></p>
+            <p id="quantity"></p>
+            <p id="totalCost"></p> <!-- Placeholder for total cost -->
+            <p id="email"></p>
+            <p id="cardNumber"></p>
+            <p id="expiryDate"></p>
+            <p id="cvc"></p>
+            <p id="cardholderName"></p>
+            <p id="country"></p>
+        </div>
+        <img id="itemImage" class="item-image" src="fooddelivery.png" alt="Selected Item Image"> <!-- Placeholder for item image -->
+    </div>
+
+    <div class="divvu">
+        <h1>Thanks For Ordering</h1>
+    </div>
+
+    <a href="index.html" class="home-button">Home</a>
+
+    <script>
+        // Function to generate a random order ID
+        function generateOrderId() {
+            return 'ORD-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+        }
+
+        // Set a random order ID and display it
+        const orderId = generateOrderId();
+        document.getElementById('orderId').textContent = `Order ID: ${orderId}`;
+
+        // Retrieve order details and payment details from localStorage
+        const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+        const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+        
+        // Check if order details exist and display them
+        if (orderDetails) {
+            document.getElementById('dishName').textContent = `Dish Name: ${orderDetails.name}`;
+            document.getElementById('restaurant').textContent = `Restaurant: ${orderDetails.restaurant}`;
+            document.getElementById('quantity').textContent = `Quantity: ${orderDetails.quantity}`;
+            document.getElementById('totalCost').textContent = `Total Cost: ₹${orderDetails.total.toFixed(2)}`; // Display total cost
+            
+            // Set the image source if the URL exists
+            if (orderDetails.image) {
+                document.getElementById('itemImage').src = orderDetails.image;
+                document.getElementById('itemImage').alt = `Image of ${orderDetails.name}`;
+            } else {
+                document.getElementById('itemImage').style.display = 'header_img.png'; // Hide image if no URL
+            }
+        } else {
+            document.querySelector('.info-box').innerHTML += '<p>No order details available.</p>';
+        }
+
+        // Check if payment details exist and display them
+        if (paymentDetails) {
+            document.getElementById('email').textContent = `Email: ${paymentDetails.email}`;
+            // Display only the last 3 digits of the card number
+            if (paymentDetails.cardNumber) {
+                const lastThreeDigits = paymentDetails.cardNumber.slice(-3);
+                document.getElementById('cardNumber').textContent = `Card Number: ***${lastThreeDigits}`;
+            }
+            // document.getElementById('expiryDate').textContent = `Expiry Date: ${paymentDetails.expiryDate}`;
+            // document.getElementById('cvc').textContent = `CVC: ${paymentDetails.cvc}`;
+            document.getElementById('cardholderName').textContent = `Cardholder Name: ${paymentDetails.cardholderName}`;
+            // document.getElementById('country').textContent = `Country: ${paymentDetails.country}`;
+        } else {
+            document.querySelector('.info-box').innerHTML += '<p>No payment details available.</p>';
+        }
+
+        // Optionally clear localStorage after displaying
+        localStorage.removeItem('paymentDetails');
+        localStorage.removeItem('orderDetails');
+    </script>
+</body>
+</html>
