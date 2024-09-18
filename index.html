@@ -303,6 +303,29 @@ body {
         window.location.href="menu.html";
     }
     </script>
+        <script>
+            function menu() {
+                window.location.href = "menu.html";
+            }
+    
+            function showImages(id) {
+                // Hide all additional images
+                var allImageSections = document.querySelectorAll('.additional-images');
+                allImageSections.forEach(function (section) {
+                    section.style.display = 'none';
+                });
+    
+                // Show the selected set of images
+                var selectedImages = document.getElementById(id);
+                if (selectedImages) {
+                    selectedImages.style.display = 'flex';
+                }
+            }
+    
+            window.onload = function() {
+                showImages('salad-images'); // Display salad images by default
+            }
+        </script>
 </head>
 <body>
     <div class="navbar">

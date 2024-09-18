@@ -187,9 +187,48 @@
     }
 }
 
+.cart{
+    height: 40px;
+    width: 35px;
+    margin-left: 2%;
+}
+
+
+    .cart-container {
+        position: relative;
+        display: inline-block;
+    }
+    .cart-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+</style>
+
+
+
     </style>
         
-
+        <script>
+            function updateCartCount() {
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                const cartCount = document.getElementById('cartCount');
+                cartCount.textContent = cartItems.length;
+            }
+        
+            // Update cart count on page load
+            // window.onload = updateCartCount;
+        </script>
+        
 
 </head>
 <body>
@@ -197,7 +236,12 @@
     <!-- Search bar container -->
     <div class="search-container">
         <input type="text" id="searchBar" onkeyup="searchMovies()" placeholder="Search for Dishes..">
+        <div class="cart-container">
+            <!-- <img src="pngwing.com (1).png" alt="Cart" class="cart" onclick="window.location.href='Cart.html'"> -->
+            <!-- <span id="cartCount" class="cart-badge"></span> -->
+        </div>
     </div>
+    
 
   
     <div class="movie-container">
@@ -208,7 +252,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button onclick="orderNow('Penne', 'Sushi Haven', 'Food Provides essential nutrients for overall health.', 'assests/pa2.jpeg',150)">Order Now</button>            </div>
+                <button onclick="orderNow('Penne', 'Sushi Haven', 'Food Provides essential nutrients for overall health.', 'assests/pa2.jpeg',150)">Add to Cart</button>            </div>
         </div>
         
         <div class="movie">
@@ -218,7 +262,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button5" onclick="orderNow('Dinner Rolls','Bella Italia', 'Food Provides essential nutrients for overall health','assests/r1.jpg',180 )">Order Now</button>
+                <button id="button5" onclick="orderNow('Dinner Rolls','Bella Italia', 'Food Provides essential nutrients for overall health','assests/r1.jpg',180 )">Add to Cart</button>
             </div>
         </div>
         
@@ -229,7 +273,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button25" onclick="orderNow('Spaghetti','Food Provides essential nutrients for overall health.','Bella Italia','assests/pa1.jpeg',200)">Order Now</button>
+                <button id="button25" onclick="orderNow('Spaghetti','Food Provides essential nutrients for overall health.','Bella Italia','assests/pa1.jpeg',200)">Add to Cart</button>
             </div>
         </div>
         
@@ -240,7 +284,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button23" onclick="orderNow('Chole Bhature','Food Provides essential nutrients for overall health.','Sushi Haven','assests/p3.jpeg',250)">Order Now</button>
+                <button id="button23" onclick="orderNow('Chole Bhature','Food Provides essential nutrients for overall health.','Sushi Haven','assests/p3.jpeg',250)">Add to Cart</button>
             </div>
         </div>
         
@@ -251,7 +295,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button24" onclick="orderNow('Vegetable Biryani','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/p4.jpeg',300)">Order Now</button>
+                <button id="button24" onclick="orderNow('Vegetable Biryani','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/p4.jpeg',300)">Add to Cart</button>
             </div>
         </div>
         
@@ -262,7 +306,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button10" onclick="orderNow('Brownies','Food Provides essential nutrients for overall health.','Sushi Haven','assests/d2.jpeg',70)">Order Now</button>
+                <button id="button10" onclick="orderNow('Brownies','Food Provides essential nutrients for overall health.','Sushi Haven','assests/d2.jpeg',70)">Add to Cart</button>
             </div>
         </div>
         
@@ -273,7 +317,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button27" onclick="orderNow('Fettuccine','Food Provides essential nutrients for overall health.','Sushi Haven','assests/pa3.jpeg',130)">Order Now</button>
+                <button id="button27" onclick="orderNow('Fettuccine','Food Provides essential nutrients for overall health.','Sushi Haven','assests/pa3.jpeg',130)">Add to Cart</button>
             </div>
         </div>
         
@@ -284,7 +328,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button17" onclick="orderNow('Chocolate Cake','Food Provides essential nutrients for overall health.','Bella Italia','assests/c1.jpeg',350)">Order Now</button>
+                <button id="button17" onclick="orderNow('Chocolate Cake','Food Provides essential nutrients for overall health.','Bella Italia','assests/c1.jpeg',350)">Add to Cart</button>
             </div>
         </div>
         
@@ -295,7 +339,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="28" onclick="orderNow('Greek Salad','Food Provides essential nutrients for overall health.','Bella Italia','assests/s2.jpg',170)">Order Now</button>
+                <button id="28" onclick="orderNow('Greek Salad','Food Provides essential nutrients for overall health.','Bella Italia','assests/s2.jpg',170)">Add to Cart</button>
             </div>
         </div>
         
@@ -306,7 +350,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button20" onclick="orderNow('Carrot Cake','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/c4.jpeg',270)">Order Now</button>
+                <button id="button20" onclick="orderNow('Carrot Cake','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/c4.jpeg',270)">Add to Cart</button>
             </div>
         </div>
         
@@ -317,7 +361,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button13" onclick="orderNow('Club Sandwich','Food Provides essential nutrients for overall health.','Bella Italia','assests/sw1.jpeg',100)">Order Now</button>
+                <button id="button13" onclick="orderNow('Club Sandwich','Food Provides essential nutrients for overall health.','Bella Italia','assests/sw1.jpeg',100)">Add to Cart</button>
             </div>
         </div>
         
@@ -328,7 +372,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button22" onclick="orderNow('Aloo Gobi','Food Provides essential nutrients for overall health.','Sushi Haven','assests/p2.jpeg',80)">Order Now</button>
+                <button id="button22" onclick="orderNow('Aloo Gobi','Food Provides essential nutrients for overall health.','Sushi Haven','assests/p2.jpeg',80)">Add to Cart</button>
             </div>
         </div>
         
@@ -339,7 +383,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button4" onclick="orderNow('Caprese Salad','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/s4.jpg',150)">Order Now</button>
+                <button id="button4" onclick="orderNow('Caprese Salad','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/s4.jpg',150)">Add to Cart</button>
             </div>
         </div>
         
@@ -350,7 +394,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button1-9" onclick="orderNow('Cheesecake','Food Provides essential nutrients for overall health.','Sushi Haven','assests/c3.jpeg',300)">Order Now</button>
+                <button id="button1-9" onclick="orderNow('Cheesecake','Food Provides essential nutrients for overall health.','Sushi Haven','assests/c3.jpeg',300)">Add to Cart</button>
             </div>
         </div>
         
@@ -361,7 +405,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button14" onclick="orderNow('Reuben Sandwich','Food Provides essential nutrients for overall health.','Sushi Haven','assests/sw2.jpeg',130)">Order Now</button>
+                <button id="button14" onclick="orderNow('Reuben Sandwich','Food Provides essential nutrients for overall health.','Sushi Haven','assests/sw2.jpeg',130)">Add to Cart</button>
             </div>
         </div>
         
@@ -372,7 +416,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button9" onclick="orderNow('Tiramisu','Food Provides essential nutrients for overall health.','Bella Italia','assests/d1.jpeg',50)">Order Now</button>
+                <button id="button9" onclick="orderNow('Tiramisu','Food Provides essential nutrients for overall health.','Bella Italia','assests/d1.jpeg',50)">Add to Cart</button>
             </div>
         </div>
         
@@ -383,7 +427,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button16" onclick="orderNow('Grilled Cheese Sandwich','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/sw4.jpeg',150)">Order Now</button>
+                <button id="button16" onclick="orderNow('Grilled Cheese Sandwich','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/sw4.jpeg',150)">Add to Cart</button>
             </div>
         </div>
         
@@ -394,7 +438,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button3" onclick="orderNow('Cobb Salad','Food Provides essential nutrients for overall health.','Sushi Haven','assests/s3.jpg',180)">Order Now</button>
+                <button id="button3" onclick="orderNow('Cobb Salad','Food Provides essential nutrients for overall health.','Sushi Haven','assests/s3.jpg',180)">Add to Cart</button>
             </div>
         </div>
         
@@ -405,7 +449,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button11" onclick="orderNow('Panna Cotta','Food Provides essential nutrients for overall health.','Sushi Haven','assests/d3.jpeg',400)">Order Now</button>
+                <button id="button11" onclick="orderNow('Panna Cotta','Food Provides essential nutrients for overall health.','Sushi Haven','assests/d3.jpeg',400)">Add to Cart</button>
             </div>
         </div>
         
@@ -416,7 +460,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button18" onclick="orderNow('Pink Cake','Food Provides essential nutrients for overall health.','Sushi Haven','assests/c2.jpeg',300)">Order Now</button>
+                <button id="button18" onclick="orderNow('Pink Cake','Food Provides essential nutrients for overall health.','Sushi Haven','assests/c2.jpeg',300)">Add to Cart</button>
             </div>
         </div>
         
@@ -427,7 +471,7 @@
                 <p>Food provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button2-8" onclick="orderNow('Ravioli','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/pa4.jpg',100)">Order Now</button>
+                <button id="button2-8" onclick="orderNow('Ravioli','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/pa4.jpg',100)">Add to Cart</button>
             </div>
         </div>
         
@@ -438,7 +482,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button8" onclick="orderNow('Sushi Rolls','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/r4.jpg',120)">Order Now</button>
+                <button id="button8" onclick="orderNow('Sushi Rolls','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/r4.jpg',120)">Add to Cart</button>
             </div>
         </div>
         
@@ -449,7 +493,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★</span> <!-- Star symbol --> <br>
-                <button id="button15" onclick="orderNow('BLT Sandwich','Food Provides essential nutrients for overall health.','Sushi Haven','assests/sw3.jpeg',60)">Order Now</button>
+                <button id="button15" onclick="orderNow('BLT Sandwich','Food Provides essential nutrients for overall health.','Sushi Haven','assests/sw3.jpeg',60)">Add to Cart</button>
             </div>
         </div>
         
@@ -460,7 +504,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button12" onclick="orderNow('Mango Pudding','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/d4.jpeg',90)">Order Now</button>
+                <button id="button12" onclick="orderNow('Mango Pudding','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/d4.jpeg',90)">Add to Cart</button>
             </div>
         </div>
         
@@ -471,7 +515,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Bella Italia</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button21" onclick="orderNow('Paneer Tikka','Food Provides essential nutrients for overall health.','Bella Italia','assests/p1.jpeg',250)">Order Now</button>
+                <button id="button21" onclick="orderNow('Paneer Tikka','Food Provides essential nutrients for overall health.','Bella Italia','assests/p1.jpeg',250)">Add to Cart</button>
             </div>
         </div>
         
@@ -482,7 +526,7 @@
                 <p>Food Provides essential nutrients for overall health.</p>
                 <p>Restaurant: Sushi Haven</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button19" onclick="orderNow('Strawberry cake','Food Provides essential nutrients for overall health.','Sushi Haven','assests/c3.jpeg',450)">Order Now</button>
+                <button id="button19" onclick="orderNow('Strawberry cake','Food Provides essential nutrients for overall health.','Sushi Haven','assests/c3.jpeg',450)">Add to Cart</button>
             </div>
         </div>
         
@@ -493,34 +537,30 @@
                 <p>Food provides essential nutrients for overall health.</p>
                 <p>Restaurant: The Gourmet Bistro</p>
                 <span class="rating-symbol">★★★★★</span> <!-- Star symbol --> <br>
-                <button id="button28" onclick="orderNow('Ravioli Cheese','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/pa4.jpg',200)">Order Now</button>
+                <button id="button28" onclick="orderNow('Ravioli Cheese','Food Provides essential nutrients for overall health.','The Gourmet Bistro','assests/pa4.jpg',200)">Add to Cart</button>
             </div>
         </div>
         
         
     </div>
 
+
     <script>
-       
+        // The orderNow function takes parameters passed from the button click
+        function orderNow(itemName, itemDescription, restaurantName, itemImageUrl, itemPrice) {
+            // Store the selected item details in localStorage
+            localStorage.setItem("selectedItemName", itemName);
+            localStorage.setItem("itemDescription", itemDescription);
+            localStorage.setItem("restaurantName", restaurantName);
+            localStorage.setItem("itemImageUrl", itemImageUrl);
+            localStorage.setItem("itemPrice", itemPrice);
+    
+            // Redirect to the Cart page
+            window.location.href = "Cart.html";
+        }
+    </script>
 
-       function orderNow(name, restaurant, description, image, price) {
-    // Store the selected item details in localStorage
-    const itemDetails = {
-        name: name,
-        restaurant: restaurant,
-        description: description,
-        image: image,
-        price: price // Add the price to the item details
-    };
-    localStorage.setItem('selectedItem', JSON.stringify(itemDetails));
-
-    // Redirect to the checkout page
-    window.location.href = "Checkout.html";
-}
-
-
-
-
+    <script>
         // Function to filter movies based on search input
         function searchMovies() {
             const input = document.getElementById('searchBar').value.toLowerCase();
