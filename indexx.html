@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhu's Food Delivery</title>
+    <style>
+        /* General styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #007bff;
+}
+
+.navbar .logo {
+    font-size: 50px;
+    color: #ff5a3c;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    gap: 10px; /* Space between buttons */
+}
+
+/* Intro image styles */
+.intro-img {
+    display: flex; /* Center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Hide any overflow */
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.intro-img img {
+    max-width: 100%; /* Make sure the image fits within its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+    transition: transform 0.3s ease;
+}
+
+.intro-img img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Button styles */
+.btn {
+    background: linear-gradient(145deg, #007bff, #0056b3); /* Gradient background */
+    border: none; /* Remove default border */
+    color: white; /* Text color */
+    padding: 12px 24px; /* Padding inside buttons */
+    font-size: 18px; /* Font size */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    outline: none; /* Remove default outline */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Shadow effect */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Spacing between letters */
+    margin: 10px 0;
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #0056b3, #003d7a); /* Darker gradient on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Increased shadow on hover */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    background: linear-gradient(145deg, #003d7a, #002b5e); /* Even darker gradient when button is pressed */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.1); /* Shadow for pressed state */
+    transform: translateY(2px); /* Slightly move the button down */
+}
+
+/* Types section */
+.types {
+    text-align: center;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border-radius: 15px;
+}
+
+.types h1 {
+    font-size: 40px;
+    color: black;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-style: italic;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.types p {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-style: italic;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.types-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.types-item {
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.types-item:hover {
+    transform: scale(1.1);
+}
+
+.types-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    transition: border 0.3s;
+}
+
+.types-item:hover img {
+    border: 3px solid orange;
+}
+
+.types-item p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.types-item:hover p {
+    color: #FF6600;
+    transform: scale(1.1);
+}
+
+/* Additional images section */
+.additional-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Increase space between images */
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.additional-images img {
+    width: 300px; /* Make the images larger */
+    height: 200px; /* Set a specific height */
+    border-radius: 15px; /* Rounded corners */
+    object-fit: cover; /* Ensure images maintain aspect ratio and fill the space */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
+}
+
+.additional-images img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navbar .logo {
+        font-size: 40px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .intro-img {
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .types h1 {
+        font-size: 30px;
+    }
+
+    .types p {
+        font-size: 16px;
+    }
+
+    .types-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .types-item {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .additional-images img {
+        width: 100%;
+        height: auto;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar a {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    .navbar .logo {
+        font-size: 30px;
+    }
+
+    .menu {
+        gap: 5px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .intro-img {
+        padding: 5px;
+    }
+
+    .additional-images img {
+        width: 95%;
+        height: auto;
+    }
+}   
+
+    </style>
+    
+
+    <script>
+        function menu(){
+        window.location.href="menu.html";
+    }
+    </script>
+        <script>
+            function menu() {
+                window.location.href = "menu.html";
+            }
+    
+            function showImages(id) {
+                // Hide all additional images
+                var allImageSections = document.querySelectorAll('.additional-images');
+                allImageSections.forEach(function (section) {
+                    section.style.display = 'none';
+                });
+    
+                // Show the selected set of images
+                var selectedImages = document.getElementById(id);
+                if (selectedImages) {
+                    selectedImages.style.display = 'flex';
+                }
+            }
+    
+            window.onload = function() {
+                showImages('salad-images'); // Display salad images by default
+            }
+        </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">MY     Food Delivery</div>
+        <div class="menu">
+            <input type="button" value="Home" class="btn">
+            <input type="button" value="Menu" onclick="menu()" class="btn">
+            <input type="button" value="Mobile App" class="btn">
+            <input type="button" value="Contact Us" class="btn">
+            <input type="button" value="Sign In" class="btn">
+        </div>
+    </div>
+            
+    <div class="intro-img">
+        <img src="header_img.png" alt="Introduction Image" class="intro-img">
+    </div>
+
+    <section class="types">
+        <h1>Explore Our Types</h1>
+        <p>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience. One delicious meal at a time.</p>
+        <div class="types-items">
+            <div class="types-item" onclick="showImages('salad-images')">
+                <img src="assests/menu_1.png" alt="Salad">
+                <p>Salad</p>
+            </div>
+            <div class="types-item" onclick="showImages('rolls-images')">
+                <img src="assests/menu_2.png" alt="Rolls">
+                <p>Rolls</p>
+            </div>
+            <div class="types-item" onclick="showImages('desserts-images')">
+                <img src="assests/menu_3.png" alt="Desserts">
+                <p>Desserts</p>
+            </div>
+            <div class="types-item" onclick="showImages('sandwich-images')">
+                <img src="assests/menu_4.png" alt="Sandwich">
+                <p>Sandwich</p>
+            </div>
+            <div class="types-item" onclick="showImages('cake-images')">
+                <img src="assests/menu_5.png" alt="Cake">
+                <p>Cake</p>
+            </div>
+            <div class="types-item" onclick="showImages('pureveg-images')">
+                <img src="assests/menu_6.png" alt="Pure Veg">
+                <p>Pure Veg</p>
+            </div>
+            <div class="types-item" onclick="showImages('pasta-images')">
+                <img src="assests/menu_7.png" alt="Pasta">
+                <p>Pasta</p>
+            </div>
+        </div>
+
+        <div id="salad-images" class="additional-images">
+            <img src="assests/s1.jpg" alt="Salad 1">
+            <img src="assests/s2.jpg" alt="Salad 2">
+            <img src="assests/s3.jpg" alt="Salad 3">
+            <img src="assests/s4.jpg" alt="Salad 4">
+        </div>
+        
+
+        <div id="rolls-images" class="additional-images">
+            <img src="assests/r1.jpg" alt="Rolls 1">
+            <img src="assests/r2.jpg" alt="Rolls 2">
+            <img src="assests/r3.jpg" alt="Rolls 3">
+            <img src="assests/r4.jpg" alt="Rolls 4">
+        
+        </div>
+
+        <div id="desserts-images" class="additional-images">
+            <img src="assests/d1.jpeg" alt="Desserts 1">
+            <img src="assests/d2.jpeg" alt="Desserts 2">
+            <img src="assests/d3.jpeg" alt="Desserts 3">
+            <img src="assests/d4.jpeg" alt="Desserts 4">
+          
+        </div>
+
+        <div id="sandwich-images" class="additional-images">
+            <img src="assests/sw1.jpeg" alt="Sandwich 1">
+            <img src="assests/sw2.jpeg" alt="Sandwich 2">
+            <img src="assests/sw3.jpeg" alt="Sandwich 3">
+            <img src="assests/sw4.jpeg" alt="Sandwich 4">
+           
+        </div>
+
+        <div id="cake-images" class="additional-images">
+            <img src="assests/c1.jpeg" alt="Cake 1">
+            <img src="assests/c2.jpeg" alt="Cake 2">
+            <img src="assests/c3.jpeg" alt="Cake 3">
+            <img src="assests/c4.jpeg" alt="Cake 4">
+
+        </div>
+
+        <div id="pureveg-images" class="additional-images">
+            <img src="assests/p1.jpeg" alt="Pure Veg 1">
+            <img src="assests/p2.jpeg" alt="Pure Veg 2">
+            <img src="assests/p3.jpeg" alt="Pure Veg 3">
+            <img src="assests/p4.jpeg" alt="Pure Veg 4">
+           
+        </div>
+
+        <div id="pasta-images" class="additional-images">
+            <img src="assests/pa1.jpeg" alt="Pasta 1">
+            <img src="assests/pa2.jpeg" alt="Pasta 2">
+            <img src="assests/pa3.jpeg" alt="Pasta 3">
+            <img src="assests/pa4.jpg" alt="Pasta 4">
+        
+        </div>
+    </section>
+
+    <script>
+        function showImages(id) {
+            // Hide all additional images
+            var allImageSections = document.querySelectorAll('.additional-images');
+            allImageSections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected set of images
+            var selectedImages = document.getElementById(id);
+            if (selectedImages) {
+                selectedImages.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>

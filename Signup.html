@@ -4,99 +4,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<style>
+    /* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #2e2e2e, #4a4a4a); /* Subtle dark grey gradient */
 
-        .signup-container {
-            background: #fff;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        h1 {
-            margin-bottom: 1em;
-            color: #333;
-        }
+.signup-container {
+    background-color: #1f1f1f; /* Bold dark background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    color: #f2f2f2; /* Light text color */
+}
 
-        .input-group {
-            margin-bottom: 1.5em;
-            text-align: left;
-        }
+.signup-container:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: #c0b6bb; /* Bold magenta circle */
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 4s ease-in-out infinite;
+}
 
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5em;
-            font-weight: bold;
-            color: #333;
-        }
+.signup-container:after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background:#c0b6bb; /* Matching bold magenta circle */
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+}
 
-        .input-group input {
-            width: 100%;
-            padding: 0.75em;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1em;
-        }
+.signup-container h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff; /* White text */
+    letter-spacing: 1.5px;
+}
 
-        input:focus {
-            border-color: #2575fc;
-            outline: none;
-        }
+.signup-container input[type="text"], 
+.signup-container input[type="email"], 
+.signup-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ff4d4d; /* Bold red borders */
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease;
+    background-color: #f2f2f2; /* Light input background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-        button {
-            width: 100%;
-            padding: 0.75em;
-            background-color: #2575fc;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.signup-container input[type="text"]:focus, 
+.signup-container input[type="email"]:focus, 
+.signup-container input[type="password"]:focus {
+    border-color: #ff4d4d; /* Bold focus color */
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.6); /* Red glow */
+}
 
-        button:hover {
-            background-color: #6a11cb;
-        }
-    </style>
+.signup-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff4d4d, #ff1a75); /* Bold red-pink gradient */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.signup-container input[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff1a75, #ff4d4d); /* Reversed bold gradient */
+    transform: scale(1.05);
+}
+
+.signup-container p {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #f50b0b; /* Soft pink text */
+}
+
+.signup-container a {
+    color: #ff4d4d; /* Bold red links */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.signup-container a:hover {
+    color: #10100f; /* Hover link color */
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 30px;
+        max-width: 350px;
+    }
+
+    .signup-container h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .signup-container input[type="text"], 
+    .signup-container input[type="email"], 
+    .signup-container input[type="password"] {
+        padding: 12px;
+        font-size: 14px;
+        margin: 12px 0;
+    }
+
+    .signup-container input[type="submit"] {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .signup-container p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 20px;
+        max-width: 100%;
+        margin: 0 20px;
+    }
+
+    .signup-container h2 {
+        font-size: 20px;
+    }
+
+    .signup-container input[type="text"], 
+    .signup-container input[type="email"], 
+    .signup-container input[type="password"] {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .signup-container input[type="submit"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .signup-container p {
+        font-size: 12px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+</style>
 </head>
 <body>
     <div class="signup-container">
-        <h1>Sign Up</h1>
-        <form action="SignupServlet" method="post">
-            <div class="input-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Create a password" required>
-            </div>
-            <div class="input-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
-            </div>
-            <button type="submit">Sign Up</button>
-            <div class="login-link"></div>
-                <p>Already have an account? <a href="Login.html">Login</a></p>
-            </div>
+        <h2>Create Your Account</h2>
+        <form id="signupForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <input type="submit" value="Sign Up">
         </form>
+        <p><b>Already have an account? <a href="index.html">Login here</a></b></p>
     </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Here you can add form validation or submit data to the backend
+
+            // Redirect to login page after sign up
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
