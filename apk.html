@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Our App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    /* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6f00, #ff9100);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.app-info {
+    margin-bottom: 20px;
+}
+
+.app-icon {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.app-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.app-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.app-info li {
+    margin-bottom: 10px;
+}
+
+.download-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #6e45e2, #88d3ce);
+    color: #fff;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.download-button:hover {
+    background: linear-gradient(45deg, #88d3ce, #6e45e2);
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 20px;
+    color: #444;
+    font-size: 0.9em;
+}
+
+</style>
+<body>
+    <div class="container">
+        <header>
+            <h1>Download Our App</h1>
+            <p>Your gateway to a better experience!</p>
+        </header>
+        <main>
+            <section class="app-info">
+                <img src="app-icon.png" alt="App Icon" class="app-icon">
+                <h2>App Features</h2>
+                <ul>
+                    <li>Feature 1: Amazing functionality</li>
+                    <li>Feature 2: User-friendly interface</li>
+                    <li>Feature 3: Regular updates</li>
+                </ul>
+                <a href="app-release.apk" class="download-button" download>Download APK</a>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
