@@ -339,14 +339,21 @@ body {
         window.location.href="contact.html";
         }
         </script>
+
+        <script>
+            function apk(){
+        window.location.href="apk.html";
+        }
+        </script>
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">MY     Food Delivery</div>
+        <div class="logo">MY Food Delivery</div>
         <div class="menu">
             <input type="button" value="Home" class="btn">
             <input type="button" value="Menu" onclick="menu()" class="btn">
-            <!-- <input type="button" value="Mobile App" class="btn"> -->
+            <input type="button" value="Mobile App" class="btn"  onclick="apk()">
+
             <input type="button" value="Contact Us" class="btn" onclick="contact()">
             <input type="button" value="Sign Out" class="btn"onclick="Sign()">
         </div>
