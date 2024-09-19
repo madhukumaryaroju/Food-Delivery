@@ -301,7 +301,8 @@ body {
     <script>
         function menu(){
         window.location.href="menu.html";
-    }
+        }
+      
     </script>
         <script>
             function menu() {
@@ -326,6 +327,18 @@ body {
                 showImages('salad-images'); // Display salad images by default
             }
         </script>
+
+        <script>
+              function Sign(){
+            window.location.href="index.html";
+        }
+        </script>
+
+        <script>
+            function contact(){
+        window.location.href="contact.html";
+        }
+        </script>
 </head>
 <body>
     <div class="navbar">
@@ -334,8 +347,8 @@ body {
             <input type="button" value="Home" class="btn">
             <input type="button" value="Menu" onclick="menu()" class="btn">
             <input type="button" value="Mobile App" class="btn">
-            <input type="button" value="Contact Us" class="btn">
-            <input type="button" value="Sign In" class="btn">
+            <input type="button" value="Contact Us" class="btn" onclick="contact()">
+            <input type="button" value="Sign In" class="btn"onclick="Sign()">
         </div>
     </div>
             
