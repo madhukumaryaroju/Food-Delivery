@@ -125,7 +125,6 @@ body {
     color: white; /* Hover link color */
     text-decoration: underline;
 }
-
 /* Responsive Styles */
 @media (max-width: 768px) {
     .signup-container {
@@ -145,11 +144,13 @@ body {
         padding: 14px;
         font-size: 15px;
         margin: 10px 0;
+        width: 85%; /* Decreased width */
     }
 
     .signup-container input[type="submit"] {
         padding: 12px;
         font-size: 16px;
+        width: 85%; /* Match the width of input fields */
     }
 
     .signup-container p {
@@ -160,9 +161,9 @@ body {
 @media (max-width: 480px) {
     .signup-container {
         padding: 20px;
-        max-width: 70%; /* Making it medium-sized for mobile */
+        max-width: 90%; /* Medium-sized container for mobile */
         margin: 0 auto;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding slight shadow for a modern look */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .signup-container h2 {
@@ -172,14 +173,15 @@ body {
     .signup-container input[type="text"], 
     .signup-container input[type="email"], 
     .signup-container input[type="password"] {
-        /* padding: 10px; */
+        padding: 12px;
         font-size: 14px;
-        padding-left: 5%;
+        width: 80%; /* Further decrease for smaller screens */
     }
 
     .signup-container input[type="submit"] {
         padding: 12px;
         font-size: 14px;
+        width: 80%; /* Match input width */
     }
 
     .signup-container p {
@@ -197,6 +199,7 @@ body {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
+
 
 
 </style>
