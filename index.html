@@ -3,301 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        /* Reset some default styles */
-        body, h1, form {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Sign Up</title>
+<style>
+    /* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #2e2e2e, #4a4a4a); /* Subtle dark grey gradient */
 
-        /* Set background with gradient and add bubble effect */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Bold gradient */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative; /* Needed for bubbles positioning */
-        }
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        /* Bubble Styles */
-        .bubble {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.15); /* Subtle bubbles */
-            border-radius: 50%;
-            animation: float 10s infinite ease-in-out;
-        }
+.signup-container {
+    background-color: #1f1f1f; /* Bold dark background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    color: #f2f2f2; /* Light text color */
+}
 
-        .bubble:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            bottom: 10%;
-            left: 15%;
-            animation-duration: 8s;
-        }
+.signup-container:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: #c0b6bb; /* Bold magenta circle */
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 4s ease-in-out infinite;
+}
 
-        .bubble:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 5%;
-            right: 10%;
-            animation-duration: 12s;
-        }
+.signup-container:after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background:#c0b6bb; /* Matching bold magenta circle */
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+}
 
-        .bubble:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            bottom: 20%;
-            right: 20%;
-            animation-duration: 10s;
-        }
+.signup-container h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff; /* White text */
+    letter-spacing: 1.5px;
+}
 
-        .bubble:nth-child(4) {
-            width: 140px;
-            height: 140px;
-            top: 25%;
-            left: 25%;
-            animation-duration: 14s;
-        }
+.signup-container input[type="text"], 
+.signup-container input[type="email"], 
+.signup-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ff4d4d; /* Bold red borders */
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease;
+    background-color: #f2f2f2; /* Light input background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-        .bubble:nth-child(5) {
-            width: 90px;
-            height: 90px;
-            bottom: 15%;
-            left: 45%;
-            animation-duration: 16s;
-        }
+.signup-container input[type="text"]:focus, 
+.signup-container input[type="email"]:focus, 
+.signup-container input[type="password"]:focus {
+    border-color: #ff4d4d; /* Bold focus color */
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.6); /* Red glow */
+}
 
-        /* Bold Magenta Circle */
-        .magenta-circle {
-            position: absolute;
-            width: 200px; /* Larger size for emphasis */
-            height: 200px; /* Larger size for emphasis */
-            background: rgba(255, 0, 255, 0.6); /* Bold magenta color */
-            border-radius: 50%;
-            top: 50%;
-            right: -100px; /* Start slightly outside the view */
-            transform: translate(-50%, -50%);
-            animation: floatMagenta 15s infinite ease-in-out;
-            z-index: 1;
-        }
+.signup-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff4d4d, #ff1a75); /* Bold red-pink gradient */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
 
-        /* Floating Animation */
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-40px); /* Increased float distance */
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
+.signup-container input[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff1a75, #ff4d4d); /* Reversed bold gradient */
+    transform: scale(1.05);
+}
 
-        /* Bold Magenta Floating Animation */
-        @keyframes floatMagenta {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-25px, -25px); /* More pronounced floating */
-            }
-            100% {
-                transform: translate(0, 0);
-            }
-        }
+.signup-container p {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #f50b0b; /* Soft pink text */
+}
 
-        /* Login Container */
-        .login-container {
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            animation: fadeIn 1s ease-out;
-            position: relative;
-            z-index: 10;
-        }
+.signup-container a {
+    color: #ff4d4d; /* Bold red links */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
 
-        h1 {
-            margin-bottom: 25px;
-            font-size: 28px;
-            font-weight: 700;
-            color: #333;
-            letter-spacing: 1.5px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Adding shadow for depth */
-        }
+.signup-container a:hover {
+    color: white; /* Hover link color */
+    text-decoration: underline;
+}
 
-        /* Input styles */
-        .input-group {
-            margin-bottom: 1.5em;
-            text-align: left;
-        }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 25px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5em;
-            font-weight: bold;
-            color: #333;
-        }
+    .signup-container h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
 
-        .input-group input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #333;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .signup-container input[type="text"], 
+    .signup-container input[type="email"], 
+    .signup-container input[type="password"] {
+        padding: 14px;
+        font-size: 15px;
+        margin: 10px 0;
+    }
 
-        .input-group input:focus {
-            border-color: #ff7e5f;
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 126, 95, 0.2);
-        }
+    .signup-container input[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
 
-        /* Button styles */
-        button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
+    .signup-container p {
+        font-size: 14px;
+    }
+}
 
-        button:hover {
-            background: linear-gradient(135deg, #feb47b, #ff7e5f);
-            transform: scale(1.05);
-        }
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 20px;
+        max-width: 90%; /* Making it medium-sized for mobile */
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding slight shadow for a modern look */
+    }
 
-        /* Signup link */
-        .signup-link {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #555;
-        }
+    .signup-container h2 {
+        font-size: 22px;
+    }
 
-        .signup-link a {
-            color: #ff7e5f;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
+    .signup-container input[type="text"], 
+    .signup-container input[type="email"], 
+    .signup-container input[type="password"] {
+        padding: 12px;
+        font-size: 14px;
+    }
 
-        .signup-link a:hover {
-            color: #feb47b;
-            text-decoration: underline;
-        }
+    .signup-container input[type="submit"] {
+        padding: 12px;
+        font-size: 14px;
+    }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .login-container {
-                padding: 25px;
-                max-width: 320px;
-            }
+    .signup-container p {
+        font-size: 13px;
+    }
+}
 
-            h1 {
-                font-size: 24px;
-            }
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 
-            .input-group input {
-                padding: 12px;
-                font-size: 15px;
-            }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
-            button {
-                padding: 12px;
-                font-size: 16px;
-            }
 
-            .signup-link {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 15px;
-                max-width: 100%;
-                margin: 0 15px;
-            }
-
-            h1 {
-                font-size: 20px;
-            }
-
-            .input-group input {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            button {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .signup-link {
-                font-size: 12px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+</style>
 </head>
 <body>
-    <div class="magenta-circle"></div>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit">Login</button>
-            <div class="signup-link">
-                <p><b>Don't have an account? </b><a href="Signup.html">Sign Up</a></p>
-            </div>
+    <div class="signup-container">
+        <h2>LOGIN</h2>
+        <form id="signupForm">
+            <!-- <input type="text" placeholder="Full Name" required> -->
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <!-- <input type="password" placeholder="Confirm Password" required> -->
+            <input type="submit" value="Login">
         </form>
+        <p><b>Don't have an account? <a href="Signup.html">Sign Up</a></b></p>
     </div>
-    <!-- Add bubbles -->
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault();
             // Here you can add form validation or submit data to the backend
-    
-            // Redirect to index.html after form submission
+
+            // Redirect to login page after sign up
             window.location.href = 'indexx.html';
         });
     </script>
-    
 </body>
 </html>
