@@ -10,10 +10,18 @@
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7fa;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #333;
             line-height: 1.6;
             transition: background-color 0.3s ease;
+        }
+    
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     
         /* Header styles */
@@ -316,6 +324,7 @@
             75% { transform: translateX(5px); }
         }
     </style>
+    
     
     
 </head>

@@ -8,211 +8,224 @@
 
     <style>
         body {
-    background-color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: linear-gradient(270deg, #ff7f50, #1e90ff, #ff6347, #32cd32, #9400d3);
+            background-size: 1000% 1000%;
+            animation: backgroundChange 15s ease infinite;
+        }
 
-/* Search bar styles */
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
+        @keyframes backgroundChange {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-#searchBar {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
-}
+        /* Search bar styles */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
 
-#searchBar:focus {
-    border-color: #007bff;
-}
+        #searchBar {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s ease;
+        }
 
-/* Movie container styles */
-.movie-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    padding: 40px;
-}
+        #searchBar:focus {
+            border-color: #007bff;
+        }
 
-.movie {
-    width: 100%;
-    max-width: 350px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px;
-}
+        /* Movie container styles */
+        .movie-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            padding: 40px;
+        }
 
-.movie:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
+        .movie {
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
 
-.movie img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-}
+        .movie:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
 
-.movie img:hover {
-    opacity: 0.9;
-}
+        .movie img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
 
-.movie-info {
-    padding: 15px;
-    position: relative;
-}
+        .movie img:hover {
+            opacity: 0.9;
+        }
 
-.movie-info h3 {
-    margin: 10px 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-}
+        .movie-info {
+            padding: 15px;
+            position: relative;
+        }
 
-.movie-info p {
-    color: black;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
+        .movie-info h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
 
-.movie-info button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
+        .movie-info p {
+            color: black;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
 
-.movie-info button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
+        .movie-info button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-.rating-symbol {
-    font-size: 20px;
-    color: goldenrod;
-    margin-right: 5px;
-}
+        .movie-info button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
 
-.im1 {
-    width: 100%;
-    height: auto;
-}
+        .rating-symbol {
+            font-size: 20px;
+            color: goldenrod;
+            margin-right: 5px;
+        }
 
-/* Responsive design */
-@media screen and (max-width: 768px) {
-    .movie-container {
-        padding: 20px;
-        gap: 20px;
-    }
+        .im1 {
+            width: 100%;
+            height: auto;
+        }
 
-    .movie {
-        width: 90%;
-    }
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .movie-container {
+                padding: 20px;
+                gap: 20px;
+            }
 
-    /* Adjust font sizes for mobile screens */
-    #searchBar {
-        width: 90%; /* Adjust width for smaller screens */
-        font-size: 14px;
-    }
+            .movie {
+                width: 90%;
+            }
 
-    .movie-info h3 {
-        font-size: 16px; /* Slightly smaller font */
-    }
+            /* Adjust font sizes for mobile screens */
+            #searchBar {
+                width: 90%;
+                font-size: 14px;
+            }
 
-    .movie-info p {
-        font-size: 13px; /* Adjust paragraph size for readability on smaller screens */
-    }
+            .movie-info h3 {
+                font-size: 16px;
+            }
 
-    .movie-info button {
-        padding: 8px;
-        font-size: 14px; /* Reduce button font size */
-    }
+            .movie-info p {
+                font-size: 13px;
+            }
 
-    .movie-container {
-        gap: 15px; /* Reduce gap between items on smaller screens */
-    }
+            .movie-info button {
+                padding: 8px;
+                font-size: 14px;
+            }
 
-    .movie-info {
-        padding: 10px; /* Less padding on mobile */
-    }
-}
+            .movie-container {
+                gap: 15px;
+            }
 
-@media screen and (max-width: 480px) {
-    #searchBar {
-        width: 95%; /* Full width for very small screens */
-        font-size: 12px;
-    }
+            .movie-info {
+                padding: 10px;
+            }
+        }
 
-    .movie-container {
-        padding: 10px;
-        gap: 10px;
-    }
+        @media screen and (max-width: 480px) {
+            #searchBar {
+                width: 95%;
+                font-size: 12px;
+            }
 
-    .movie-info h3 {
-        font-size: 14px;
-    }
+            .movie-container {
+                padding: 10px;
+                gap: 10px;
+            }
 
-    .movie-info p {
-        font-size: 12px;
-    }
+            .movie-info h3 {
+                font-size: 14px;
+            }
 
-    .movie-info button {
-        font-size: 12px;
-        padding: 7px;
-    }
+            .movie-info p {
+                font-size: 12px;
+            }
 
-    .movie {
-        max-width: 100%;
-    }
-}
+            .movie-info button {
+                font-size: 12px;
+                padding: 7px;
+            }
 
-.cart{
-    height: 40px;
-    width: 35px;
-    margin-left: 2%;
-}
+            .movie {
+                max-width: 100%;
+            }
+        }
 
+        .cart {
+            height: 40px;
+            width: 35px;
+            margin-left: 2%;
+        }
 
-    .cart-container {
-        position: relative;
-        display: inline-block;
-    }
-    .cart-badge {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background-color: red;
-        color: white;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-    }
-</style>
+        .cart-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .glass {
+            width: 3%;
+            margin-right: 1%;
+        }
+    </style>
 
 
 
@@ -234,7 +247,9 @@
 <body>
 
     <!-- Search bar container -->
+
     <div class="search-container">
+        <img src="glas.png" alt="" srcset="" class="glass">
         <input type="text" id="searchBar" onkeyup="searchMovies()" placeholder="Search for Dishes..">
         <div class="cart-container">
             <!-- <img src="pngwing.com (1).png" alt="Cart" class="cart" onclick="window.location.href='Cart.html'"> -->
