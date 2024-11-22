@@ -3,227 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-<style>
-    /* Global styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #2e2e2e, #4a4a4a); /* Subtle dark grey gradient */
+    <title>Login</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5, #eaeaea); /* Subtle off-white gradient */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-}
+        .login-container {
+            background-color: #ffffff; /* Pure white background */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-.signup-container {
-    background-color: #1f1f1f; /* Bold dark background */
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    animation: fadeIn 1s ease-out;
-    position: relative;
-    z-index: 10;
-    overflow: hidden;
-    color: #f2f2f2; /* Light text color */
-}
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50; /* Professional dark blue-gray */
+        }
 
-.signup-container:before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    width: 200px;
-    height: 200px;
-    background: #c0b6bb; /* Bold magenta circle */
-    border-radius: 50%;
-    z-index: -1;
-    animation: float 4s ease-in-out infinite;
-}
+        .login-container input[type="email"], 
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #2c3e50;
+            background-color: #f8f9fa; /* Light grey for input fields */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.signup-container:after {
-    content: '';
-    position: absolute;
-    bottom: -60px;
-    right: -60px;
-    width: 200px;
-    height: 200px;
-    background:#c0b6bb; /* Matching bold magenta circle */
-    border-radius: 50%;
-    z-index: -1;
-    animation: float 6s ease-in-out infinite;
-}
+        .login-container input[type="email"]:focus, 
+        .login-container input[type="password"]:focus {
+            border-color: #0984e3; /* Subtle blue accent */
+            outline: none;
+            box-shadow: 0 0 10px rgba(9, 132, 227, 0.3); /* Blue glow */
+        }
 
-.signup-container h2 {
-    margin-bottom: 25px;
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff; /* White text */
-    letter-spacing: 1.5px;
-}
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3); /* Professional blue gradient */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.signup-container input[type="text"], 
-.signup-container input[type="email"], 
-.signup-container input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    margin: 15px 0;
-    border: 1px solid #ff4d4d;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    transition: border-color 0.3s ease;
-    background-color: #f2f2f2; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+        .login-container input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-.signup-container input[type="text"]:focus, 
-.signup-container input[type="email"]:focus, 
-.signup-container input[type="password"]:focus {
-    border-color: #ff4d4d; /* Bold focus color */
-    outline: none;
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.6); /* Red glow */
-}
+        .login-container p {
+            margin-top: 20px;
+            font-size: 15px;
+            color: #636e72; /* Neutral gray text */
+        }
 
-.signup-container input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #ff4d4d, #ff1a75); /* Bold red-pink gradient */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
+        .login-container a {
+            color: #0984e3; /* Professional blue */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
 
-.signup-container input[type="submit"]:hover {
-    background: linear-gradient(135deg, #ff1a75, #ff4d4d); /* Reversed bold gradient */
-    transform: scale(1.05);
-}
+        .login-container a:hover {
+            color: #74b9ff; /* Slightly lighter blue for hover */
+        }
 
-.signup-container p {
-    margin-top: 20px;
-    font-size: 15px;
-    color: #f50b0b; 
-}
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 25px;
+            }
 
-.signup-container a {
-    color: #ff4d4d; 
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
+            .login-container h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
 
-.signup-container a:hover {
-    color: white; /* Hover link color */
-    text-decoration: underline;
-}
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .signup-container {
-        padding: 25px;
-        max-width: 400px;
-        margin: 0 auto;
-    }
+            .login-container input[type="email"], 
+            .login-container input[type="password"] {
+                padding: 14px;
+                font-size: 15px;
+            }
 
-    .signup-container h2 {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
+            .login-container input[type="submit"] {
+                font-size: 16px;
+            }
 
-    .signup-container input[type="text"], 
-    .signup-container input[type="email"], 
-    .signup-container input[type="password"] {
-        padding: 14px;
-        font-size: 15px;
-        margin: 10px 0;
-        width: 65%; /* Decreased width */
-    }
+            .login-container p {
+                font-size: 14px;
+            }
+        }
 
-    .signup-container input[type="submit"] {
-        padding: 12px;
-        font-size: 16px;
-        width: 85%; /* Match the width of input fields */
-    }
-
-    .signup-container p {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .signup-container {
-        padding: 20px;
-        max-width: 70%; /* Medium-sized container for mobile */
-        margin: 0 auto;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .signup-container h2 {
-        font-size: 22px;
-    }
-
-    .signup-container input[type="text"], 
-    .signup-container input[type="email"], 
-    .signup-container input[type="password"] {
-        padding: 12px;
-        font-size: 14px;
-        width: 80%; /* Further decrease for smaller screens */
-    }
-
-    .signup-container input[type="submit"] {
-        padding: 12px;
-        font-size: 14px;
-        width: 80%; /* Match input width */
-    }
-
-    .signup-container p {
-        font-size: 13px;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-
-
-</style>
+    </style>
 </head>
 <body>
-    <div class="signup-container">
-        <h2>LOGIN</h2>
-        <form id="signupForm">
-            <!-- <input type="text" placeholder="Full Name" required> -->
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
             <input type="email" placeholder="Email Address" required>
             <input type="password" placeholder="Password" required>
-            <!-- <input type="password" placeholder="Confirm Password" required> -->
             <input type="submit" value="Login">
         </form>
-        <p><b>Don't have an account? <a href="Signup.html">Sign Up</a></b></p>
+        <p>Don't have an account? <a href="Signup.html">Sign Up</a></p>
     </div>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Here you can add form validation or submit data to the backend
-
-            // Redirect to login page after sign up
-            window.location.href = 'indexx.html';
+            // Simulate login process
+            alert('Login successful!');
+            // Redirect to another page
+            window.location.href = 'index.html';
         });
     </script>
 </body>
